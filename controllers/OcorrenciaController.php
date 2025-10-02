@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Area;
 use app\models\Ocorrencia;
 use app\models\OcorrenciaSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,6 +71,8 @@ class OcorrenciaController extends Controller
     {
         $model = new Ocorrencia();
 
+        $model->situacao_id = 1;
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -116,6 +120,19 @@ class OcorrenciaController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionListarAreas($id){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $areas = Area::find()
+        ->where(['bloco_id' => $id])->all();
+
+        $response = [];
+        foreach ($areas as $area){
+            $response[] = ['id' => $area->id, 'nome' => $area->nome];
+        }
+
+        return $response;
+    }
     /**
      * Finds the Ocorrencia model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

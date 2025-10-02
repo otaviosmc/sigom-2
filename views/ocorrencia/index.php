@@ -27,13 +27,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'attribute'=>'id',
+                'label' => 'ID da Ocorrência'
+            ],
             'usuario_id',
-            'bloco_id',
-            'area_id',
-            'situacao_id',
+            [
+                'attribute' => 'bloco_id',
+                'label' => 'Bloco',
+                'value' => function ($model) {
+                    return $model->bloco->nome;
+                }
+            ],
+            [
+                'attribute' => 'area_id',
+                'label' => 'Area',
+                'value' => function ($model) {
+                    return $model->area->nome;
+                }
+            ],
+            [
+                'attribute' => 'situacao_id',
+                'label' => 'Situacao',
+                'value' => function ($model) {
+                    return $model->situacao->nome;
+                }
+            ],
             //'descricao',
             [
                 'class' => ActionColumn::className(),

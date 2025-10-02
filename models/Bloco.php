@@ -16,7 +16,6 @@ use Yii;
 class Bloco extends \yii\db\ActiveRecord
 {
 
-
     /**
      * {@inheritdoc}
      */

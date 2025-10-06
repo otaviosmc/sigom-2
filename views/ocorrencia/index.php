@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Ocorrencia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar Ocorrencia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,9 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'attribute'=>'id',
-                'label' => 'ID da Ocorrência'
+                'label' => 'ID'
             ],
-            'usuario_id',
+            [
+                'attribute' => 'usuario_id',
+                'label' => 'Usuário'
+            ],
             [
                 'attribute' => 'bloco_id',
                 'label' => 'Bloco',
@@ -48,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'situacao_id',
-                'label' => 'Situacao',
+                'label' => 'Situação',
                 'value' => function ($model) {
                     return $model->situacao->nome;
                 }
@@ -56,6 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'descricao',
             [
                 'class' => ActionColumn::className(),
+                'template' => '{view}',
                 'urlCreator' => function ($action, Ocorrencia $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

@@ -2,7 +2,6 @@
 
 use app\models\Area;
 use app\models\Bloco;
-use app\models\Situacao;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;

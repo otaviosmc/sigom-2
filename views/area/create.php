@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Area $model */
 
-$this->title = Yii::t('app', 'Create Area');
+$this->title = Yii::t('app', 'Cadastrar Area');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Areas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
